@@ -1,0 +1,15 @@
+- name: Create user if not exist
+  hosts: localhost
+
+  vars_prompt:
+  - name: username
+    prompt: "Enter the username you want to create"
+  tasks:
+  - name: Check if roboshop user exist
+    ansible.builtin.command: id roboshop
+    register: out
+    ignore_errors: true
+
+  - name: print the command output
+    ansible.builtin.debug:
+      msg: "Output is : {{out}}"
