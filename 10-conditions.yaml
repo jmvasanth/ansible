@@ -16,11 +16,11 @@
     ansible.builtin.debug:
       msg: "Output is : {{out}}"
 
-  - name: print exit status
-    ansible.builtin.debug:
-      msg: "The exit status is {{out.rc}}"
+  #- name: print exit status
+  #  ansible.builtin.debug:
+  #    msg: "The exit status is {{out.rc}}"
 
-  - name: Create the username based on the exit status
+  - name: Create the directory based on the exit status
     become: yes
     file:
       path: './tmp/"{{directory}}"'
