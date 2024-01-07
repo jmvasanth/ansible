@@ -4,9 +4,10 @@
   vars_prompt:
   - name: username
     prompt: "Enter the username you want to create"
+    private: false
   tasks:
-  - name: Check if roboshop user exist
-    ansible.builtin.command: id roboshop
+  - name: Check if username already exist
+    ansible.builtin.command: id {{username}}
     register: out
     ignore_errors: true
 
