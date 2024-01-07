@@ -8,7 +8,7 @@
   tasks:
   - name: Check if directory already exist
     stat: 
-      path: "/tmp/{{directory}}"
+      path: '/tmp/"{{directory}}"'
     register: out
     ignore_errors: true
 
@@ -23,7 +23,7 @@
   - name: Create the username based on the exit status
     become: yes
     file:
-      path: "./tmp/{{directory}}"
+      path: './tmp/"{{directory}}"'
       state: directory
       mode: 0755
 
