@@ -1,0 +1,30 @@
+- name: Create directory if it does not exist
+  hosts: localhost
+
+  vars_prompt:
+  - name: directory
+    prompt: "Enter the name of the directory you want to create"
+    private: false
+  tasks:
+  - name: Check if directory already exist
+    stat: 
+      path: "/tmp/{{directory}}"
+    register: out
+    ignore_errors: true
+
+  - name: print the command output
+    ansible.builtin.debug:
+      msg: "Output is : {{out}}"
+
+  - name: print exit status
+    ansible.builtin.debug:
+      msg: "The exit status is {{out.rc}}"
+
+  - name: Create the username based on the exit status
+    become: yes
+    file:
+      path: "./tmp/{{directory}}"
+      state: directory
+      mode: 0755
+
+    when: not out.stat.exists
