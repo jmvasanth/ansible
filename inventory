@@ -1,6 +1,9 @@
 [mongodb]
 mongodb.vgsk.online
 
+[mongodb:vars]
+ MONGODB_USERNAME=mongodbadmin
+
 [catalogue]
 catalogue.vgsk.online
 
