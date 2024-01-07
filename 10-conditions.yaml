@@ -23,7 +23,7 @@
   - name: Create the directory based on the exit status
     become: yes
     file:
-      path: './tmp/{{directory}}'
+      path: '/tmp/{{directory}}'
       state: directory
       mode: 0755
 
