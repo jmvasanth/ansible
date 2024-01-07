@@ -22,5 +22,5 @@
   - name: Create the username based on the exit status
     become: yes
     ansible.builtin.user:
-      name: username
+      name: "{{username}}"
     when: out.rc != 0
